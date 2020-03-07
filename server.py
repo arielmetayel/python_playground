@@ -11,7 +11,7 @@ def multiply_by_two(namber):
     return str(namber*2)
 
 
-@app.route('/guess_the_number/<int:namber')
+@app.route('/guess_the_number/<int:namber>')
 def guess (namber):
     did_you_guess = 'no'
     return ('did_you_guess: ' + did_you_guess)
