@@ -2,7 +2,7 @@ import random
 import time
 import matplotlib.pyplot as plt
 import numpy as np
-
+import string
 
 from flask import Flask
 app = Flask(__name__)
@@ -34,13 +34,32 @@ def playing_with_numpy():
 
 
 
+def password_generator():
+#Write a programme, which generates a 
+# random password for the user. Ask the user how 
+# long they want their password to be, and how many letters 
+# and numbers they want in their password. Have a mix of upper and 
+# lowercase letters, as well as numbers and symbols. The password 
+# should be a minimum of 6 characters long.
+
+    possibilities = list(string.printable)
+    
+    password_length = int(input('how long of a password would you need? (choose a number between 6 - 14:  '))
+    while ((password_length>14) or (password_length<6)):
+        password_length = int(input('we need this to be number between 6 - 14:  '))    
+
+    password = []
+    password = random.choices(possibilities,k = password_length)
+    print(password)
+    printable_password = "".join(password)
+    print ('Here is your new shiny password (',password_length,'chars):',printable_password)
+
 
 
 def plotting_sin_cos ():
     welcome_message('plotting_sin_cos')
 
     x = np.linspace(-10, 10, 100)
-    print (x)
     plt.plot(x, np.sin(x))
     plt.plot(x, np.cos(x))
     plt.show()
@@ -144,3 +163,4 @@ def guess_the_number():
 #welcome_message('Nurrrrrr')
 #plotting_sin_cos ()
 #playing_with_numpy ()
+#password_generator ()
