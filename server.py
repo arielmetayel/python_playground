@@ -1,5 +1,9 @@
 import random
 import time
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 from flask import Flask
 app = Flask(__name__)
 
@@ -17,6 +21,32 @@ def multiply_by_two(namber):
 #def guess (namber):
 #    did_you_guess = 'no'
 #    return ('did_you_guess: ' + did_you_guess)
+
+def playing_with_numpy():
+    a = np.array([(0,1,2,3,4,5),(6,7,8,9,10,11)])
+    print(a)
+    print(a.ndim)
+    print(a.size)
+    print(a.shape)
+    print(np.sum(a))
+    return()
+
+
+
+
+
+
+def plotting_sin_cos ():
+    welcome_message('plotting_sin_cos')
+
+    x = np.linspace(-10, 10, 100)
+    print (x)
+    plt.plot(x, np.sin(x))
+    plt.plot(x, np.cos(x))
+    plt.show()
+    return ()
+
+
 
 
 def welcome_message(function_name):
@@ -102,6 +132,15 @@ def guess_the_number():
         print ('you guessed too low')
     return     
 
-guess_the_number ()
-#rock_paper_scissors()
+#For this project, you will have a generate a sine vs cosine curve. 
+# You will need to use the numpy library to access the sine and cosine 
+# functions. You will also need to use the matplotlib library to draw the curve. 
+# To make this more difficult, make the graph go from -360° to 360°, with there 
+# being a 180° difference between each point on the x-axis.
 
+
+#guess_the_number ()
+#rock_paper_scissors()
+#welcome_message('Nurrrrrr')
+#plotting_sin_cos ()
+#playing_with_numpy ()
