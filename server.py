@@ -19,13 +19,24 @@ def multiply_by_two(namber):
 #    return ('did_you_guess: ' + did_you_guess)
 
 
+def welcome_message(function_name):
+    print ('Loading your game...')
+    for line in range (1,8):
+        for x in range (1,8):
+            print(":)" * x, end = '\r')
+            time.sleep(0.1)
+        print("                         ", end = '\r')
+    print ('\n\n\nwelcome to the --',function_name, '-- game!\n \n \n')
+    time.sleep(2)
+    return()
 
+
+def rock_paper_scissors ():
 #Make a rock-paper-scissors game where it is the player 
 # vs the computer. The computer’s answer will be randomly 
 # generated, while the program will ask the user for their input. 
-# This project will better your understanding of while loops and if statements.
+    welcome_message('rock_paper_scissors')
 
-def rock_paper_scissors ():
     selection = ['r','p','s']
     score = {'player':0, 'computer':0}
 
@@ -79,6 +90,8 @@ def rock_paper_scissors ():
 
 def guess_the_number():
 #function prints a flow of guessing a number and prnting if it is less/more/same as a random number.
+    welcome_message('guess_the_number')
+
     gussed_number = int(input("guess a number between 1 and 20:  "))
     compare_to_this = random.randint(1,20)
     if (gussed_number == compare_to_this):
@@ -89,6 +102,6 @@ def guess_the_number():
         print ('you guessed too low')
     return     
 
-#guess_the_number ()
-rock_paper_scissors()
+guess_the_number ()
+#rock_paper_scissors()
 
