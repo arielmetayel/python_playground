@@ -1,4 +1,5 @@
 import random
+import time
 from flask import Flask
 app = Flask(__name__)
 
@@ -17,13 +18,63 @@ def multiply_by_two(namber):
 #    did_you_guess = 'no'
 #    return ('did_you_guess: ' + did_you_guess)
 
-#Guess The Number
-#Write a programme where the computer randomly 
-# generates a number between 0 and 20. The user needs to guess what the number is. 
-# If the user guesses wrong, tell them their guess is either too high, or too low. 
-# This will get you started with the random library if you haven't already used it.
 
 
+#Make a rock-paper-scissors game where it is the player 
+# vs the computer. The computer’s answer will be randomly 
+# generated, while the program will ask the user for their input. 
+# This project will better your understanding of while loops and if statements.
+
+def rock_paper_scissors ():
+    selection = ['r','p','s']
+    score = {'player':0, 'computer':0}
+
+    #welcoming the user
+    print ('\n let\'s play! \n try to win against the computer in rock, paper, scissors\n \n \
+    first one who reaches 3 is the winner! \n \n \
+    r for rock, p for paper, s for scissors:')
+    time.sleep(2)
+    
+    while (score['player'] < 3) and (score['computer'] < 3):
+    #get the input
+        user_rps = input ('Your turn (r/p/s):')
+        while user_rps not in selection:
+            user_rps = input ('wrong input. try only (r/p/s):') 
+    #check for the winner of the mini game
+        computer_rps = random.choice(selection)
+        print ('computer went with: ', computer_rps, end = ' - ')
+        if computer_rps == user_rps:
+            print ('it\'s a tie')
+        elif computer_rps == "r":
+            if user_rps == "s":
+                score['computer'] += 1
+                print('computer wins')
+            else:
+                score['player'] += 1
+                print('you win')
+        elif computer_rps == "p":
+            if user_rps == "r":
+                score['computer'] += 1
+                print('computer wins')
+            else:
+                score['player'] += 1
+                print('you win')
+        elif computer_rps == "s":
+            if user_rps == "p":
+                score['computer'] += 1
+                print('computer wins')
+            else:
+                score['player'] += 1
+                print('you win')
+
+    #print the result
+    print ('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+- \n and the final score is... \n-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-')
+    
+    for each in score:
+        print (each,'-->',score[each])
+    print ('-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-')
+
+    return ()
 
 
 def guess_the_number():
@@ -39,3 +90,5 @@ def guess_the_number():
     return     
 
 #guess_the_number ()
+rock_paper_scissors()
+
