@@ -22,8 +22,20 @@ def multiply_by_two(namber):
 #    did_you_guess = 'no'
 #    return ('did_you_guess: ' + did_you_guess)
 
+def welcome_message(function_name):
+    print ('Loading your game...')
+    for line in range (1,8):
+        for x in range (1,8):
+            print(":)" * x, end = '\r')
+            time.sleep(0.1)
+        print("                         ", end = '\r')
+    print ('\n\n\nwelcome to the --',function_name, '-- game!\n \n \n')
+    time.sleep(2)
+    return()
+
+
 def playing_with_numpy():
-    a = np.array([(0,1,2,3,4,5),(6,7,8,9,10,11)])
+    a = np.array([     (0,1,2,3,4,5), (6,7,8,9,10,11), (6,7,8,9,10,11)])
     print(a)
     print(a.ndim)
     print(a.size)
@@ -33,6 +45,62 @@ def playing_with_numpy():
 
 
 
+def hangman ():
+#This is probably the hardest one out of these 6 small projects. 
+# This will be similar to guessing the number, except we are guessing 
+# the word. The user needs to guess letters,Give the user no more 
+# than 6 attempts for guessing wrong letter. This will mean you will 
+# have to have a counter. You can download a ‘sowpods’ dictionary 
+# file or csv file to use as a way to get a random word to use.
+
+#get a word. break it to letters
+#accepts input
+#if input is within the letters, show them. otherwise show _ _ _ _ _ 
+#variables: total attempts up to 6
+
+    welcome_message('hangman')
+
+    bag_of_words = ['chillie', 'pepper']
+    selected_word = random.choice(bag_of_words)
+    letters_for_guessing = list(selected_word)
+    wrong_attempts = 6
+    
+    #adding counter for each letter, removing the first empty variable
+    letters_with_index = [[]]
+    for letter in letters_for_guessing:
+        letters_with_index.append([letter,0])
+    letters_with_index.pop(0)
+
+    sum = 0
+
+    while (sum < len(letters_with_index) and (wrong_attempts>0)):
+        guess = input("guess a letter: ")
+        found = False
+        for i in range(0,len(letters_with_index)):
+            if guess == letters_with_index[i][0]:
+                if letters_with_index[i][1] == 0:
+                    found = True
+                letters_with_index[i][1] = 1
+        if not found:
+            wrong_attempts -=1
+        
+        #check if the word is completely guessed
+        print(wrong_attempts, 'more tries. so far you guessed: ')
+        sum = 0
+        for j in range(0,len(letters_with_index)):
+            sum += letters_with_index[j][1]
+            if letters_with_index[j][1] == 0:
+                print ('_',end = " ")
+            else:
+                print (letters_with_index[j][0], end = " ")
+        print("")
+    if sum == len(letters_with_index):
+        print ('you won! come back house is suuposed to win')
+    else:
+        print ('you got hanged! bye bye')
+    return()
+    
+
 
 def password_generator():
 #Write a programme, which generates a 
@@ -41,7 +109,7 @@ def password_generator():
 # and numbers they want in their password. Have a mix of upper and 
 # lowercase letters, as well as numbers and symbols. The password 
 # should be a minimum of 6 characters long.
-
+    welcome_message('password_generator')
     possibilities = list(string.printable)
     
     password_length = int(input('how long of a password would you need? (choose a number between 6 - 14:  '))
@@ -67,17 +135,6 @@ def plotting_sin_cos ():
 
 
 
-
-def welcome_message(function_name):
-    print ('Loading your game...')
-    for line in range (1,8):
-        for x in range (1,8):
-            print(":)" * x, end = '\r')
-            time.sleep(0.1)
-        print("                         ", end = '\r')
-    print ('\n\n\nwelcome to the --',function_name, '-- game!\n \n \n')
-    time.sleep(2)
-    return()
 
 
 def rock_paper_scissors ():
@@ -164,3 +221,4 @@ def guess_the_number():
 #plotting_sin_cos ()
 #playing_with_numpy ()
 #password_generator ()
+hangman()
